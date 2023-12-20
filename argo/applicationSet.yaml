@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: myapps
+spec:
+  generators:
+  - pullRequest:
+      filters:
+      - branchMatch: "*"
+  template:
+    metadata:
+      name: 'myapp-{{branch}}-{{number}}'
+    spec:
+      source:
+        repoURL: 'https://github.com/ahmadzana/argocd.git'
+        targetRevision: '{{head_sha}}'
+        path: kubernetes/
+        kustomize:
+          nameSuffix: '{{branch}}'
+          commonLabels:
+            app.kubernetes.io/instance: '{{branch}}-{{number}}'
+          images:
+          - registry.rigt.online/utils/demo:1
+      project: "demo-app"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: demo-app

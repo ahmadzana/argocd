@@ -6,7 +6,7 @@ metadata:
 spec:
   description: My Demo Project
   destinations:
-    - namespace: argocd
+    - namespace: demo-app
       server: https://kubernetes.default.svc
   sourceRepos:
     - 'https://github.com/ahmadzana/argocd.git'
