@@ -10,10 +10,10 @@ spec:
     targetRevision: HEAD
     path: kubernetes
     kustomize:
-      namePrefix: my-app
+      namePrefix: my-app-
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: demo-app
   syncPolicy:
     automated:
       selfHeal: true
