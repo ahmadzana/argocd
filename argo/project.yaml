@@ -1,0 +1,12 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: demo-app
+  namespace: argocd
+spec:
+  description: My Demo Project
+  destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - 'https://github.com/ahmadzana/argocd.git'
