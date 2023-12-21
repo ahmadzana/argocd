@@ -33,3 +33,7 @@ spec:
       destination:
         server: https://kubernetes.default.svc
         namespace: demo-app
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
