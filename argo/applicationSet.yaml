@@ -5,8 +5,16 @@ metadata:
 spec:
   generators:
   - pullRequest:
-      filters:
-      - branchMatch: "*"
+      github:
+        # The GitHub organization or user.
+        owner: ahmadzana
+        # The Github repository
+        repo: argocd
+        tokenRef:
+          secretName: github-classic
+          key: secret
+      requeueAfterSeconds: 60
+
   template:
     metadata:
       name: 'myapp-{{branch}}-{{number}}'
